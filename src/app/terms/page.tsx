@@ -46,7 +46,7 @@ export const metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="relative w-full min-h-screen flex items-center justify-center bg-white z-10">
+    <main className="relative w-full min-h-screen flex items-center justify-center z-10">
       <div className="w-full max-w-2xl mx-auto flex flex-col items-start px-2 sm:px-6 py-12">
         <h1 className="text-2xl sm:text-3xl font-extrabold mb-6 text-purple-700">
           Terms & Conditions

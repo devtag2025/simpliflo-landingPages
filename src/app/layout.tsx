@@ -36,7 +36,7 @@ export default function RootLayout({
         <div className="absolute inset-0 -z-20 bg-gradient-to-r from-purple-100 via-white to-white w-full h-full" aria-hidden></div>
         {/* Subtle grid background (now above gradient, below content) */}
         <div className="absolute inset-0 pointer-events-none z-0" aria-hidden>
-          <svg className="w-full h-full" width="100%" height="100%">
+          <svg className="w-full h-full" width="100%" height="100%" style={{ opacity: 0.75 }}>
             <defs>
               <pattern
                 id="grid"
@@ -48,6 +48,9 @@ export default function RootLayout({
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid)" />
+            <text x="50%" y="90%" textAnchor="middle" fontSize="32" fill="#b7a6e9" opacity="0.18" fontWeight="bold" style={{ fontFamily: 'sans-serif', letterSpacing: '2px' }}>
+              SIMPLIFLOW
+            </text>
           </svg>
         </div>
         <div className="relative z-10"></div>

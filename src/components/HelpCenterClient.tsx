@@ -119,7 +119,7 @@ export default function HelpCenterClient() {
   }
 
   return (
-    <main className="relative z-10 w-full min-h-screen flex flex-col items-center bg-white">
+    <main className="relative z-10 w-full min-h-screen flex flex-col items-center">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -149,7 +149,7 @@ export default function HelpCenterClient() {
             ref={searchInputRef}
             type="text"
             placeholder="Search articles..."
-            className="w-full rounded-full border px-4 py-2 text-base outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-100 shadow"
+            className="w-full rounded-full border px-4 py-2 text-base outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-100 shadow bg-white"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             aria-label="Search help articles"
@@ -158,7 +158,7 @@ export default function HelpCenterClient() {
             type="button"
             onClick={handleSearchIconClick}
             aria-label="Focus search"
-            className="p-2 rounded-full hover:bg-purple-100 transition"
+            className="p-2 rounded-full bg-white hover:bg-purple-100 transition border border-gray-200"
           >
             {/* Search Icon SVG */}
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
@@ -194,7 +194,7 @@ export default function HelpCenterClient() {
               {popularArticles
                 .filter(a => filteredArticles.some(fa => fa.id === a.id)) // Only show if filtered
                 .map((a) => (
-                  <article key={a.id} className="border rounded-lg px-4 py-3 bg-purple-50" aria-labelledby={a.id + "-title"}>
+                  <article key={a.id} className="border rounded-lg px-4 py-3 bg-purple-50 shadow-lg" aria-labelledby={a.id + "-title"}>
                     <h3 id={a.id + "-title"} className="text-sm font-bold text-purple-700">{a.title}</h3>
                     <div
                       className="text-xs text-gray-700 mt-1"
@@ -225,7 +225,7 @@ export default function HelpCenterClient() {
             <div className="text-gray-500 italic">No articles found.</div>
           ) : (
             filteredArticles.map((a) => (
-              <article key={a.id} className="border rounded-lg px-4 py-3 bg-white shadow" aria-labelledby={a.id + "-title"}>
+              <article key={a.id} className="border rounded-lg px-4 py-3 bg-white shadow-lg" aria-labelledby={a.id + "-title"}>
                 <h3 id={a.id + "-title"} className="text-sm font-bold text-purple-700">{a.title}</h3>
                 <div
                   className="text-xs text-gray-700 mt-1"
