@@ -1,6 +1,9 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +30,31 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div id="top"></div>
+        <div className="relative w-full">
+        {/* Background gradient */}
+        <div className="absolute inset-0 -z-20 bg-gradient-to-r from-purple-100 via-white to-white w-full h-full" aria-hidden></div>
+        {/* Subtle grid background (now above gradient, below content) */}
+        <div className="absolute inset-0 pointer-events-none z-0" aria-hidden>
+          <svg className="w-full h-full" width="100%" height="100%">
+            <defs>
+              <pattern
+                id="grid"
+                width="50"
+                height="50"
+                patternUnits="userSpaceOnUse"
+              >
+                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#ede9fe" strokeWidth="1" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
+        <div className="relative z-10"></div>
+         <Navbar />
+         <div className="w-full min-h-screen px-6">{children}</div>
+        <Footer />
+        </div>
       </body>
     </html>
   );
