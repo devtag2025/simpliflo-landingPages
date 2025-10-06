@@ -26,7 +26,6 @@ const navItems = [
       { label: "Community", href: "/community" },
     ],
   },
-  // Update the About Us link to use the anchor!
   { label: "About Us", dropdown: null, href: "#about" },
 ];
 
@@ -57,7 +56,7 @@ function Dropdown({
 
   if (!open) return null;
   return (
-    <div className="absolute left-0 top-full mt-2 w-44 sm:w-48 bg-white rounded-2xl shadow-xl border border-gray-100 z-20">
+    <div className="absolute left-0 top-full mt-2 w-44 sm:w-48 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-white/20 z-20">
       <ul className="py-2">
         {items.map((item) => (
           <li key={item.label}>
@@ -80,7 +79,6 @@ export default function ModernNavbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = "hidden";
@@ -92,7 +90,6 @@ export default function ModernNavbar() {
     };
   }, [mobileOpen]);
 
-  // Close dropdown on Esc
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") setDropdownOpen(null);
@@ -101,7 +98,6 @@ export default function ModernNavbar() {
     return () => document.removeEventListener("keydown", handleEsc);
   }, []);
 
-  // For accessibility: close dropdown on tab away
   useEffect(() => {
     function handleFocus(e: FocusEvent) {
       if (
@@ -116,21 +112,14 @@ export default function ModernNavbar() {
     return () => document.removeEventListener("focusin", handleFocus);
   }, [dropdownOpen]);
 
-  const buttonClass =
-    "inline-flex items-center justify-center rounded-full font-medium text-base px-4 py-2 min-w-[100px] h-10 bg-white text-gray-700 hover:bg-purple-100 transition";
-
   return (
-    <div className="w-full py-5 flex justify-center sticky top-0 z-50 bg-transparent">
-      <nav className="w-full max-w-[1600px] flex flex-wrap justify-between items-center px-2 md:px-6 xl:px-8 min-h-[48px]">
+    <div className="w-full py-5 flex justify-center fixed top-0 z-50 pointer-events-none">
+      <nav className="w-full max-w-[1600px] flex flex-wrap justify-between items-center px-2 md:px-6 xl:px-8 min-h-[48px] pointer-events-auto gap-4">
         {/* Logo and hamburger for mobile */}
         <div className="flex w-full items-center justify-between lg:hidden">
           <Link
             href="/"
-            className="flex items-center gap-2 px-2 py-1 rounded-xl hover:bg-purple-50 transition"
-            style={{
-              background:
-                "linear-gradient(90deg, #ede9fe 80%, #fff 100%)",
-            }}
+            className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/90 backdrop-blur-md hover:bg-white transition shadow-lg"
           >
             <span className="w-7 h-7 bg-gradient-to-tr from-purple-400 to-indigo-300 rounded-full flex items-center justify-center">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -150,18 +139,17 @@ export default function ModernNavbar() {
                 </defs>
               </svg>
             </span>
-            <span className="font-semibold tracking-widest text-gray-900 text-base drop-shadow">
+            <span className="font-semibold tracking-widest text-gray-900 text-base drop-shadow-sm">
               SIMPLIFLOW
             </span>
           </Link>
-          {/* Hamburger right */}
           <button
-            className={buttonClass}
+            className="inline-flex items-center justify-center rounded-full font-medium text-base bg-white/90 backdrop-blur-md text-gray-700 hover:bg-white transition shadow-lg"
             aria-label="Open menu"
             onClick={() => setMobileOpen((v) => !v)}
-            style={{ minWidth: 0, padding: "0.5rem" }}
+            style={{ minWidth: 0, padding: "0.5rem", width: "2.5rem", height: "2.5rem" }}
           >
-            <svg width={28} height={28} fill="none" viewBox="0 0 24 24">
+            <svg width={24} height={24} fill="none" viewBox="0 0 24 24">
               <path
                 stroke="currentColor"
                 strokeWidth="2"
@@ -174,15 +162,14 @@ export default function ModernNavbar() {
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex flex-wrap items-center bg-white rounded-full px-2 md:px-3 xl:px-4 py-2 gap-2 md:gap-4 xl:gap-5 min-h-[40px] shadow-2xl">
-          <div className="flex flex-wrap items-center gap-2 md:gap-4 xl:gap-5 text-base font-medium text-gray-700 relative">
-            {/* Logo as nav item */}
+        <div className="hidden lg:flex flex-wrap items-center bg-white/90 backdrop-blur-md rounded-full px-2 md:px-3 xl:px-4 py-2 gap-2 md:gap-4 xl:gap-5 min-h-[40px] shadow-2xl">
+          <div className="flex flex-wrap items-center gap-2 md:gap-4 xl:gap-5 text-base font-semibold text-gray-700 relative">
             <Link href="/" className="flex items-center gap-2 px-2 py-1 rounded-xl hover:bg-purple-50 transition">
               <span className="w-6 h-6 bg-gradient-to-tr from-purple-400 to-indigo-300 rounded-full flex items-center justify-center">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="10" fill="url(#grad1)" />
+                  <circle cx="12" cy="12" r="10" fill="url(#grad2)" />
                   <defs>
-                    <linearGradient id="grad1" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                    <linearGradient id="grad2" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
                       <stop stopColor="#a78bfa"/>
                       <stop offset="1" stopColor="#818cf8"/>
                     </linearGradient>
@@ -203,7 +190,7 @@ export default function ModernNavbar() {
                   {item.dropdown ? (
                     <>
                       <button
-                        className={`flex items-center gap-1 hover:text-purple-500 pr-2 ${buttonClass} cursor-pointer`}
+                        className="flex items-center gap-1 hover:text-purple-600 px-3 py-2 rounded-full hover:bg-purple-50 transition cursor-pointer text-gray-700"
                         aria-haspopup={true}
                         aria-expanded={dropdownOpen === item.label}
                         onClick={() =>
@@ -223,10 +210,9 @@ export default function ModernNavbar() {
                       />
                     </>
                   ) : (
-                    // Use <a> for in-page anchor navigation
                     <a
                       href={item.href}
-                      className={buttonClass + " flex items-center gap-1 hover:text-purple-500 pr-2"}
+                      className="flex items-center gap-1 hover:text-purple-600 px-3 py-2 rounded-full hover:bg-purple-50 transition text-gray-700"
                     >
                       {item.label}
                     </a>
@@ -238,13 +224,13 @@ export default function ModernNavbar() {
         </div>
 
         {/* Desktop Actions */}
-        <div className="hidden lg:flex flex-wrap items-center bg-white rounded-full px-2 md:px-3 xl:px-4 py-2 gap-2 md:gap-4 min-h-[40px] shadow-2xl">
-          <Link href="/login" className={buttonClass}>
+        <div className="hidden lg:flex flex-wrap items-center bg-white/90 backdrop-blur-md rounded-full px-2 md:px-3 xl:px-4 py-2 gap-2 md:gap-4 min-h-[40px] shadow-2xl">
+          <Link href="/login" className="inline-flex items-center justify-center rounded-full font-semibold text-base px-4 py-2 min-w-[100px] h-10 bg-transparent text-gray-700 hover:bg-purple-50 transition">
             Login
           </Link>
           <Link
             href="/demo"
-            className={`${buttonClass} bg-gradient-to-r from-purple-400 to-pink-400 text-white`}
+            className="inline-flex items-center justify-center rounded-full font-semibold text-base px-4 py-2 min-w-[100px] h-10 bg-gradient-to-r from-purple-500 to-pink-400 text-white hover:opacity-90 transition"
           >
             Book a Demo
             <span className="ml-2 w-7 h-7 rounded-full bg-white/30 flex items-center justify-center">
@@ -258,17 +244,16 @@ export default function ModernNavbar() {
 
       {/* Mobile Dropdown */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-black/40 flex flex-col lg:hidden" onClick={() => setMobileOpen(false)}>
+        <div className="fixed inset-0 z-40 bg-black/40 flex flex-col lg:hidden pointer-events-auto" onClick={() => setMobileOpen(false)}>
           <div
             className="bg-white rounded-t-2xl shadow-xl mx-2 mt-4 p-0 flex flex-col gap-0 max-h-[85vh] overflow-y-auto"
-            style={{ animation: "slidein .3s" }}
+            style={{ animation: "slidein .2s" }}
             onClick={e => e.stopPropagation()}
           >
-            {/* Close */}
             <div className="flex justify-end p-4">
               <button
                 onClick={() => setMobileOpen(false)}
-                className={buttonClass}
+                className="inline-flex items-center justify-center rounded-full font-medium text-base bg-gray-100 text-gray-700 hover:bg-gray-200 transition"
                 aria-label="Close menu"
                 style={{ minWidth: 0, height: "2.5rem", width: "2.5rem", padding: "0.5rem" }}
               >
@@ -278,21 +263,16 @@ export default function ModernNavbar() {
                 </svg>
               </button>
             </div>
-            {/* Logo as nav item in mobile */}
             <div className="px-6 pb-2">
               <Link
                 href="/"
-                className="flex items-center gap-2 px-2 py-2 rounded-xl"
-                style={{
-                  background:
-                    "linear-gradient(90deg, #ede9fe 90%, #fff 100%)",
-                }}
+                className="flex items-center gap-2 px-2 py-2 rounded-xl bg-purple-50"
               >
                 <span className="w-6 h-6 bg-gradient-to-tr from-purple-400 to-indigo-300 rounded-full flex items-center justify-center">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="10" fill="url(#grad1)" />
+                    <circle cx="12" cy="12" r="10" fill="url(#grad3)" />
                     <defs>
-                      <linearGradient id="grad1" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                      <linearGradient id="grad3" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
                         <stop stopColor="#a78bfa"/>
                         <stop offset="1" stopColor="#818cf8"/>
                       </linearGradient>
@@ -307,10 +287,9 @@ export default function ModernNavbar() {
             <nav className="flex flex-col gap-2 px-6 pb-6">
               {navItems.map((item) => (
                 <div key={item.label}>
-                  {/* Use <a> here for anchor, or Link for routes */}
                   <a
                     href={item.href}
-                    className={buttonClass + " block text-left"}
+                    className="items-center justify-center rounded-full font-medium text-base px-4 py-2 min-w-[100px] h-10 bg-gray-100 text-gray-700 hover:bg-purple-100 transition block text-left"
                   >
                     {item.label}
                   </a>
@@ -329,12 +308,12 @@ export default function ModernNavbar() {
                   )}
                 </div>
               ))}
-              <Link href="/login" className={buttonClass}>
+              <Link href="/login" className="inline-flex items-center justify-center rounded-full font-medium text-base px-4 py-2 min-w-[100px] h-10 bg-gray-100 text-gray-700 hover:bg-purple-100 transition">
                 Login
               </Link>
               <Link
                 href="/demo"
-                className={`${buttonClass} bg-gradient-to-r from-purple-400 to-pink-400 text-white`}
+                className="inline-flex items-center justify-center rounded-full font-medium text-base px-4 py-2 min-w-[100px] h-10 bg-gradient-to-r from-purple-400 to-pink-400 text-white hover:opacity-90 transition"
               >
                 Book a Demo
                 <span className="ml-2 w-7 h-7 rounded-full bg-white/30 flex items-center justify-center">

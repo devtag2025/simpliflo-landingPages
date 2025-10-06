@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -32,31 +31,18 @@ export default function RootLayout({
       >
         <div id="top"></div>
         <div className="relative w-full">
-        {/* Background gradient */}
-        <div className="absolute inset-0 -z-20 bg-gradient-to-r from-purple-100 via-white to-white w-full h-full" aria-hidden></div>
-        {/* Subtle grid background (now above gradient, below content) */}
-        <div className="absolute inset-0 pointer-events-none z-0" aria-hidden>
-          <svg className="w-full h-full" width="100%" height="100%" style={{ opacity: 0.75 }}>
-            <defs>
-              <pattern
-                id="grid"
-                width="50"
-                height="50"
-                patternUnits="userSpaceOnUse"
-              >
-                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#ede9fe" strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-            <text x="50%" y="90%" textAnchor="middle" fontSize="32" fill="#b7a6e9" opacity="0.18" fontWeight="bold" style={{ fontFamily: 'sans-serif', letterSpacing: '2px' }}>
-              SIMPLIFLOW
-            </text>
-          </svg>
-        </div>
-        <div className="relative z-10"></div>
-         <Navbar />
-         <div className="w-full min-h-screen px-6">{children}</div>
-        <Footer />
+          {/* Background gradient only */}
+          <div
+            className="absolute inset-0 -z-20 bg-gradient-to-r from-purple-100 via-white to-white w-full h-full"
+            aria-hidden
+          ></div>
+
+          {/* Content */}
+          <div className="relative z-10">
+            <Navbar />
+            <main className="w-full min-h-screen">{children}</main>
+            <Footer />
+          </div>
         </div>
       </body>
     </html>

@@ -6,46 +6,19 @@ const pageContent: Record<
   string,
   { title: string; description: React.ReactElement }
 > = {
-  overview: {
-    title: "Overview",
-    description: <>This is the overview page.</>,
-  },
-  features: {
-    title: "Features",
-    description: <>All about features.</>,
-  },
-  integrations: {
-    title: "Integrations",
-    description: <>Integration details.</>,
-  },
-  teams: {
-    title: "For Teams",
-    description: <>Solutions for teams.</>,
-  },
-  individuals: {
-    title: "For Individuals",
-    description: <>Solutions for individuals.</>,
-  },
-  docs: {
-    title: "Docs",
-    description: <>Documentation resources.</>,
-  },
-  blog: {
-    title: "Blog",
-    description: <>Our blog posts.</>,
-  },
-  community: {
-    title: "Community",
-    description: <>Join our community.</>,
-  },
-  pricing: {
-    title: "Pricing",
-    description: <>See pricing details.</>,
-  },
+  overview: { title: "Overview", description: <>This is the overview page.</> },
+  features: { title: "Features", description: <>All about features.</> },
+  integrations: { title: "Integrations", description: <>Integration details.</> },
+  teams: { title: "For Teams", description: <>Solutions for teams.</> },
+  individuals: { title: "For Individuals", description: <>Solutions for individuals.</> },
+  docs: { title: "Docs", description: <>Documentation resources.</> },
+  blog: { title: "Blog", description: <>Our blog posts.</> },
+  community: { title: "Community", description: <>Join our community.</> },
+  pricing: { title: "Pricing", description: <>See pricing details.</> },
   about: {
     title: "About Us",
     description: (
-      <div className="space-y-3">
+      <div className="space-y-4">
         <p>
           Welcome to Simpliflow—where automation meets accounting and business excellence.
           <br />
@@ -76,6 +49,21 @@ const pageContent: Record<
   },
 };
 
+// Custom Not Found component (can be extended for other routes)
+const NotFoundPage = ({ slug }: { slug?: string }) => {
+  const message =
+    slug === "blog"
+      ? "Sorry, this blog post does not exist."
+      : "Sorry, this page does not exist.";
+
+  return (
+    <div className="rounded-2xl shadow-xl border border-gray-100 bg-white/80 backdrop-blur px-6 py-8 flex flex-col items-center animate-fadein">
+      <h1 className="text-2xl font-bold mb-4 text-center">Page Not Found</h1>
+      <p className="text-base text-gray-600 text-center">{message}</p>
+    </div>
+  );
+};
+
 export default function DynamicPage() {
   const params = useParams();
   const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
@@ -85,12 +73,7 @@ export default function DynamicPage() {
     <main className="w-full flex justify-center items-center min-h-[70vh] py-6 sm:py-10 md:py-16 bg-transparent">
       <div className="w-full max-w-lg mx-auto px-2 sm:px-4">
         {content ? (
-          <div
-            className="rounded-2xl shadow-xl border border-gray-100 bg-white/80 backdrop-blur px-4 py-7 sm:px-8 md:px-10 md:py-12 flex flex-col items-center overflow-auto max-h-[80vh] animate-fadein"
-            style={{
-              animation: "fadeInUp 0.7s cubic-bezier(.17,.67,.83,.67)",
-            }}
-          >
+          <div className="rounded-2xl shadow-xl border border-gray-100 bg-white/80 backdrop-blur px-4 py-7 sm:px-8 md:px-10 md:py-12 flex flex-col items-center overflow-auto max-h-[80vh] animate-fadein">
             <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight mb-3 text-center bg-gradient-to-r from-purple-500 via-pink-400 to-red-400 bg-clip-text text-transparent drop-shadow-lg transition-all duration-300">
               {content.title}
             </h1>
@@ -99,14 +82,10 @@ export default function DynamicPage() {
             </div>
           </div>
         ) : (
-          <div className="rounded-2xl shadow-xl border border-gray-100 bg-white/80 backdrop-blur px-4 py-7 flex flex-col items-center">
-            <h1 className="text-2xl font-bold mb-4 text-center">Page Not Found</h1>
-            <p className="text-base text-gray-600 text-center">
-              Sorry, this page does not exist.
-            </p>
-          </div>
+          <NotFoundPage slug={slug} />
         )}
       </div>
+
       {/* Animation CSS */}
       <style jsx>{`
         @keyframes fadeInUp {
@@ -120,7 +99,7 @@ export default function DynamicPage() {
           }
         }
         .animate-fadein {
-          animation: fadeInUp 0.7s cubic-bezier(.17,.67,.83,.67);
+          animation: fadeInUp 0.7s cubic-bezier(0.17, 0.67, 0.83, 0.67);
         }
       `}</style>
     </main>

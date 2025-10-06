@@ -14,21 +14,15 @@ export default function ShowcaseBlock() {
   useEffect(() => {
     const timer = setTimeout(
       () => setActive((prev) => (prev + 1) % screenshots.length),
-      4000
+      2500
     );
     return () => clearTimeout(timer);
   }, [active]);
 
-  // Responsive: show carousel on md+, fade transition on small screens
-  const isMobile =
-    typeof window !== "undefined" &&
-    window.matchMedia &&
-    window.matchMedia("(max-width: 767px)").matches;
-
   return (
     <section className="relative z-10 flex flex-col items-center py-8 sm:py-16 px-2 sm:px-6 overflow-hidden min-h-screen justify-center">
       {/* Decorative gradient blobs */}
-      <div className="absolute -top-24 left-1/2 -translate-x-1/2 z-0 w-[180px] h-[120px] sm:w-[320px] sm:h-[220px] rounded-full filter blur-3xl opacity-40 pointer-events-none bg-gradient-to-tr from-purple-200/40 via-pink-200/30 to-white" />
+      <div className="absolute -top-24 left-1/2 -translate-x-1/2 z-0 w-[180px] h-[120px] sm:w-[320px] sm:h-[220px] rounded-full filter blur-3xl opacity-40 pointer-events-none" />
       <div className="absolute bottom-0 right-0 z-0 w-[100px] h-[70px] sm:w-[210px] sm:h-[160px] bg-gradient-to-tr from-pink-200/60 via-purple-200/40 to-white rounded-full filter blur-3xl opacity-30 pointer-events-none" />
 
       <div className="relative z-10 text-center mb-6 sm:mb-10">
@@ -50,7 +44,7 @@ export default function ShowcaseBlock() {
           {screenshots.map((src, idx) => (
             <div
               key={src}
-              className={`absolute left-0 top-0 w-full h-full rounded-2xl shadow-xl border border-gray-100 bg-white overflow-hidden transition-opacity duration-700 ${
+              className={`absolute left-0 top-0 w-full h-full rounded-2xl shadow-xl border border-gray-100 bg-white overflow-hidden transition-opacity duration-400 ${
                 idx === active ? "opacity-100 z-20" : "opacity-0 z-10 pointer-events-none"
               }`}
             >
@@ -59,7 +53,8 @@ export default function ShowcaseBlock() {
                 alt={`Dashboard Screenshot ${idx + 1}`}
                 className="w-full h-full object-cover"
                 draggable={false}
-                loading="lazy"
+                loading={idx === 0 ? "eager" : "lazy"}
+                decoding="async"
               />
             </div>
           ))}
@@ -67,7 +62,7 @@ export default function ShowcaseBlock() {
         {/* On md+ screens: carousel animation */}
         <div className="hidden md:flex items-center justify-center w-full h-full">
           {screenshots.map((src, idx) => {
-            let style = "absolute transition-all duration-700 ease-in-out";
+            let style = "absolute transition-all duration-400 ease-in-out";
             let z = 10;
             let opacity = "opacity-80";
             let w = "w-[120px] md:w-[180px]";
@@ -75,7 +70,7 @@ export default function ShowcaseBlock() {
             let transform = "";
 
             if (idx === active) {
-              style = "relative z-20 transition-all duration-700 ease-in-out";
+              style = "relative z-20 transition-all duration-400 ease-in-out";
               opacity = "opacity-100";
               w = "w-[260px] md:w-[320px]";
               h = "h-[180px] md:h-[240px]";
