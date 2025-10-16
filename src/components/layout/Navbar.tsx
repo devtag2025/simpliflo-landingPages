@@ -102,24 +102,7 @@ export default function ModernNavbar() {
             href="/"
             className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/90 backdrop-blur-md hover:bg-white transition shadow-lg"
           >
-            <span className="w-7 h-7 bg-gradient-to-tr from-[var(--teal-hero)] to-[var(--cyan-pop)] rounded-full flex items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" fill="url(#grad1)" />
-                <defs>
-                  <linearGradient
-                    id="grad1"
-                    x1="0"
-                    y1="0"
-                    x2="24"
-                    y2="24"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#a78bfa" />
-                    <stop offset="1" stopColor="#818cf8" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </span>
+            <img src="/logo.png" alt="Simpliflow Logo" className="w-12 h-12 object-contain" />
             <span className="font-semibold tracking-widest text-[var(--ink-900)] text-base drop-shadow-sm">
               SIMPLIFLOW
             </span>
@@ -143,20 +126,10 @@ export default function ModernNavbar() {
         </div>
 
         {/* Desktop Menu */}
-  <div className="hidden lg:flex flex-wrap items-center bg-white/90 backdrop-blur-md rounded-full px-2 md:px-3 xl:px-4 py-2 gap-2 md:gap-4 xl:gap-5 min-h-[40px] shadow-2xl">
+  <div className="hidden lg:flex flex-wrap items-center bg-white/90 backdrop-blur-md rounded-full px-2 md:px-3 xl:px-4 gap-2 md:gap-4 xl:gap-5 min-h-[40px] shadow-2xl">
           <div className="flex flex-wrap items-center gap-2 md:gap-4 xl:gap-5 text-base font-semibold text-[var(--ink-900)] relative">
             <Link href="/" className="flex items-center gap-2 px-2 py-1 rounded-xl hover:bg-[var(--canvas-50)] transition">
-              <span className="w-6 h-6 bg-gradient-to-tr from-[var(--teal-hero)] to-[var(--cyan-pop)] rounded-full flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="10" fill="url(#grad2)" />
-                  <defs>
-                    <linearGradient id="grad2" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#a78bfa"/>
-                      <stop offset="1" stopColor="#818cf8"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </span>
+              <img src="/logo.png" alt="Simpliflow Logo" className="w-12 h-12 object-contain" />
               <span className="font-semibold tracking-widest text-[var(--ink-900)] text-base">SIMPLIFLOW</span>
             </Link>
             {navItems.map((item) => (
@@ -217,19 +190,9 @@ export default function ModernNavbar() {
                 href="/"
                 className="flex items-center gap-2 px-2 py-2 rounded-xl bg-[var(--canvas-50)]"
               >
-                <span className="w-6 h-6 bg-gradient-to-tr from-[var(--teal-hero)] to-[var(--cyan-pop)] rounded-full flex items-center justify-center">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="10" fill="url(#grad3)" />
-                    <defs>
-                      <linearGradient id="grad3" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="var(--teal-hero)"/>
-                        <stop offset="1" stopColor="var(--cyan-pop)"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </span>
+                <img src="/logo.png" alt="Simpliflow Logo" className="w-6 h-6 object-contain" />
                 <span className="font-semibold tracking-widest text-[var(--ink-900)] text-base drop-shadow">
-                  SIMPLIFLO
+                  SIMPLIFLOW
                 </span>
               </Link>
             </div>
