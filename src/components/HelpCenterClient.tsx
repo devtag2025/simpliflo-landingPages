@@ -95,6 +95,7 @@ const categories = [
   "Troubleshooting",
 ];
 
+
 export default function HelpCenterClient() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState<string | null>(null);
@@ -112,14 +113,13 @@ export default function HelpCenterClient() {
 
   const popularArticles = articles.filter((a) => a.popular);
 
-  // For accessible search icon button: triggers search but here just focus input
   const searchInputRef = React.useRef<HTMLInputElement>(null);
   function handleSearchIconClick() {
     searchInputRef.current?.focus();
   }
 
   return (
-    <main className="relative z-10 w-full min-h-screen flex flex-col items-center">
+    <main className="relative z-10 w-full min-h-screen flex flex-col items-center bg-[var(--canvas-0)]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -137,19 +137,19 @@ export default function HelpCenterClient() {
           }),
         }}
       />
-      <div className="w-full max-w-2xl mx-auto flex flex-col items-start px-2 sm:px-6 py-12">
-        <h1 className="text-2xl sm:text-3xl font-extrabold mb-6 text-purple-700">Help Center</h1>
-        <p className="mb-6 text-gray-600 text-sm">
-          Find answers, guides, and troubleshooting tips for Simpliflow. Use the search or browse by category.
+  <section className="w-full max-w-3xl mx-auto flex flex-col items-center px-4 sm:px-8 py-16 mt-10 sm:mt-16 rounded-3xl shadow-xl bg-gradient-to-br from-[var(--canvas-50)] via-white to-[var(--canvas-0)] border border-[var(--canvas-50)]">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] bg-clip-text text-transparent drop-shadow-sm text-center">Help Center</h1>
+        <p className="mb-8 text-base sm:text-lg text-[var(--ink-800)] text-center max-w-2xl">
+          Find answers, guides, and troubleshooting tips for <span className="font-bold text-[var(--teal-hero)]">Simpliflow</span>. Use the search or browse by category.
         </p>
 
         {/* Search Bar with Search Icon */}
-        <div className="w-full mb-6 flex items-center gap-2">
+        <div className="w-full mb-8 flex items-center gap-2">
           <input
             ref={searchInputRef}
             type="text"
             placeholder="Search articles..."
-            className="w-full rounded-full border px-4 py-2 text-base outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-100 shadow bg-white"
+            className="w-full rounded-full border border-[var(--canvas-50)] px-5 py-3 text-base outline-none focus:border-[var(--teal-hero)] focus:ring-2 focus:ring-[var(--teal-hero)]/20 shadow bg-white text-[var(--ink-900)]"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             aria-label="Search help articles"
@@ -158,27 +158,27 @@ export default function HelpCenterClient() {
             type="button"
             onClick={handleSearchIconClick}
             aria-label="Focus search"
-            className="p-2 rounded-full bg-white hover:bg-purple-100 transition border border-gray-200"
+            className="p-3 rounded-full bg-[var(--canvas-50)] hover:bg-[var(--teal-hero)] transition border border-[var(--canvas-50)]"
           >
             {/* Search Icon SVG */}
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
-              <circle cx="11" cy="11" r="7" stroke="#7C3AED" strokeWidth="2" />
-              <path d="M20 20l-4.2-4.2" stroke="#7C3AED" strokeWidth="2" strokeLinecap="round" />
+              <circle cx="11" cy="11" r="7" stroke="#14B8A6" strokeWidth="2" />
+              <path d="M20 20l-4.2-4.2" stroke="#14B8A6" strokeWidth="2" strokeLinecap="round" />
             </svg>
           </button>
         </div>
 
         {/* Category Selector */}
-        <nav className="w-full mb-6 flex flex-wrap gap-2" aria-label="Help categories">
+        <nav className="w-full mb-8 flex flex-wrap gap-3 justify-center" aria-label="Help categories">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setCategory(category === cat ? null : cat)}
-              className={`px-3 py-1 rounded-full border ${
+              className={`px-4 py-2 rounded-full border font-semibold text-sm transition shadow-sm ${
                 category === cat
-                  ? "bg-purple-600 text-white border-purple-600"
-                  : "bg-white text-purple-700 border-purple-200"
-              } font-semibold text-xs transition`}
+                  ? "bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] text-white border-[var(--teal-hero)]"
+                  : "bg-white text-[var(--teal-hero)] border-[var(--canvas-50)] hover:bg-[var(--canvas-50)]"
+              }`}
               aria-pressed={category === cat}
             >
               {cat}
@@ -188,20 +188,20 @@ export default function HelpCenterClient() {
 
         {/* Popular Articles */}
         {popularArticles.length > 0 && (
-          <div className="w-full mb-8">
-            <h2 className="text-base font-semibold mb-2 text-gray-800">Popular Articles</h2>
-            <div className="flex flex-col gap-3">
+          <div className="w-full mb-10">
+            <h2 className="text-lg font-bold mb-3 text-[var(--teal-hero)] text-center">Popular Articles</h2>
+            <div className="flex flex-col gap-4">
               {popularArticles
-                .filter(a => filteredArticles.some(fa => fa.id === a.id)) // Only show if filtered
+                .filter(a => filteredArticles.some(fa => fa.id === a.id))
                 .map((a) => (
-                  <article key={a.id} className="border rounded-lg px-4 py-3 bg-purple-50 shadow-lg" aria-labelledby={a.id + "-title"}>
-                    <h3 id={a.id + "-title"} className="text-sm font-bold text-purple-700">{a.title}</h3>
+                  <article key={a.id} className="border border-[var(--canvas-50)] rounded-2xl px-6 py-5 bg-gradient-to-br from-[var(--canvas-0)] via-white to-[var(--canvas-50)] shadow-xl" aria-labelledby={a.id + "-title"}>
+                    <h3 id={a.id + "-title"} className="text-base font-bold bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] bg-clip-text text-transparent mb-2">{a.title}</h3>
                     <div
-                      className="text-xs text-gray-700 mt-1"
+                      className="text-sm text-[var(--ink-800)] mt-1"
                       dangerouslySetInnerHTML={{ __html: a.content }}
                     />
                     <button
-                      className="mt-2 text-xs text-purple-600 underline focus:outline-none"
+                      className="mt-3 text-xs text-[var(--teal-hero)] underline focus:outline-none"
                       onClick={() => setExpanded(expanded === a.id ? null : a.id)}
                       aria-expanded={expanded === a.id}
                     >
@@ -209,7 +209,7 @@ export default function HelpCenterClient() {
                     </button>
                     {expanded === a.id && a.more && (
                       <div
-                        className="text-xs text-gray-600 mt-2"
+                        className="text-xs text-[var(--ink-800)] mt-2"
                         dangerouslySetInnerHTML={{ __html: a.more }}
                       />
                     )}
@@ -220,19 +220,19 @@ export default function HelpCenterClient() {
         )}
 
         {/* Articles List */}
-        <section className="w-full flex flex-col gap-4" aria-label="Help articles">
+        <section className="w-full flex flex-col gap-6" aria-label="Help articles">
           {filteredArticles.length === 0 ? (
-            <div className="text-gray-500 italic">No articles found.</div>
+            <div className="text-[var(--ink-700)] italic text-center">No articles found.</div>
           ) : (
             filteredArticles.map((a) => (
-              <article key={a.id} className="border rounded-lg px-4 py-3 bg-white shadow-lg" aria-labelledby={a.id + "-title"}>
-                <h3 id={a.id + "-title"} className="text-sm font-bold text-purple-700">{a.title}</h3>
+              <article key={a.id} className="border border-[var(--canvas-50)] rounded-2xl px-6 py-5 bg-white shadow-xl" aria-labelledby={a.id + "-title"}>
+                <h3 id={a.id + "-title"} className="text-base font-bold bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] bg-clip-text text-transparent mb-2">{a.title}</h3>
                 <div
-                  className="text-xs text-gray-700 mt-1"
+                  className="text-sm text-[var(--ink-800)] mt-1"
                   dangerouslySetInnerHTML={{ __html: a.content }}
                 />
                 <button
-                  className="mt-2 text-xs text-purple-600 underline focus:outline-none"
+                  className="mt-3 text-xs text-[var(--teal-hero)] underline focus:outline-none"
                   onClick={() => setExpanded(expanded === a.id ? null : a.id)}
                   aria-expanded={expanded === a.id}
                 >
@@ -240,18 +240,18 @@ export default function HelpCenterClient() {
                 </button>
                 {expanded === a.id && a.more && (
                   <div
-                    className="text-xs text-gray-600 mt-2"
+                    className="text-xs text-[var(--ink-800)] mt-2"
                     dangerouslySetInnerHTML={{ __html: a.more }}
                   />
                 )}
-                <span className="mt-2 text-[11px] text-gray-400 block">
+                <span className="mt-2 text-[11px] text-[var(--ink-700)] block">
                   Category: {a.category}
                 </span>
               </article>
             ))
           )}
         </section>
-      </div>
+      </section>
     </main>
   );
 }

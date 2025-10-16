@@ -33,8 +33,8 @@ const SplitText: React.FC<SplitTextProps> = ({
   to = { opacity: 1, y: 0 },
   threshold = 0.1,
   rootMargin = '-100px',
-  textAlign = 'center',
   tag = 'p',
+  textAlign = 'center',
   onLetterAnimationComplete
 }) => {
   const ref = useRef<HTMLParagraphElement>(null);
@@ -54,7 +54,6 @@ const SplitText: React.FC<SplitTextProps> = ({
   useGSAP(
     () => {
       if (!ref.current || !text || !fontsLoaded) return;
-
       const el = ref.current as HTMLElement & {
         _rbsplitInstance?: GSAPSplitText;
       };
@@ -79,7 +78,8 @@ const SplitText: React.FC<SplitTextProps> = ({
       const start = `top ${startPct}%${sign}`;
       let targets: Element[] = [];
       const assignTargets = (self: GSAPSplitText) => {
-        if (splitType.includes('chars') && self.chars.length) targets = self.chars;
+        if (splitType.includes('chars') && (self as GSAPSplitText).chars?.length)
+          targets = (self as GSAPSplitText).chars;
         if (!targets.length && splitType.includes('words') && self.words.length) targets = self.words;
         if (!targets.length && splitType.includes('lines') && self.lines.length) targets = self.lines;
         if (!targets.length) targets = self.chars || self.words || self.lines;
@@ -151,13 +151,10 @@ const SplitText: React.FC<SplitTextProps> = ({
   const renderTag = () => {
     const style: React.CSSProperties = {
       textAlign,
-      overflow: 'hidden',
-      display: 'inline-block',
-      whiteSpace: 'normal',
       wordWrap: 'break-word',
       willChange: 'transform, opacity'
     };
-    const classes = `split-parent ${className}`;
+    const classes = `split-parent overflow-hidden inline-block whitespace-normal ${className}`;
     switch (tag) {
       case 'h1':
         return (
@@ -203,6 +200,7 @@ const SplitText: React.FC<SplitTextProps> = ({
         );
     }
   };
+
   return renderTag();
 };
 

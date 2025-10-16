@@ -19,9 +19,9 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  border: 1px solid #555;
+  border: 1px solid var(--champagne);
   border-radius: calc(var(--outer-r) - var(--p-distance));
-  background-color: #0d0d0d;
+  background-color: var(--canvas-50);
   overflow: hidden;
   cursor: grab;
 }
@@ -31,14 +31,14 @@
 }
 
 .carousel-container.round {
-  border: 1px solid #555;
+  border: 1px solid var(--canvas-50);
 }
 
 .carousel-item.round {
-  background-color: #0d0d0d;
+  background-color: var(--canvas-50);
   position: relative;
   bottom: 0.1em;
-  border: 1px solid #555;
+  border: 1px solid var(--canvas-50);
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -70,13 +70,13 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: var(--canvas-0);
 }
 
 .carousel-icon {
   height: 16px;
   width: 16px;
-  color: #060010;
+  color: var(--teal-hero);
 }
 
 .carousel-item-content {
@@ -88,12 +88,12 @@
   margin-bottom: 4px;
   font-weight: 900;
   font-size: 18px;
-  color: #fff;
+  color: var(--ink-900);
 }
 
 .carousel-item-description {
   font-size: 14px;
-  color: #fff;
+  color: var(--ink-800);
 }
 
 /* ✅ Indicators Section */
@@ -118,22 +118,23 @@
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(120, 120, 120, 0.3);
+  border: 1px solid var(--champagne);
+  background: #FFFFFF;
   box-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
 }
 
 /* ✅ Active indicator: gradient glow */
 .carousel-indicator.active {
-  background: linear-gradient(90deg, #a855f7, #ec4899, #ef4444);
+  background: linear-gradient(90deg, var(--teal-hero), var(--cyan-pop));
   transform: scale(1.2);
   border: none;
-  box-shadow: 0 0 8px rgba(236, 72, 153, 0.6);
+  box-shadow: 0 0 8px var(--cyan-pop);
 }
 
 /* ✅ Inactive indicator: subtle neutral gray */
 .carousel-indicator.inactive {
-  background-color: rgba(100, 100, 100, 0.4);
+  background-color: var(--canvas-0);
+  border: solid 2px var(--champagne);
 }
 
 @media (max-width: 768px) {

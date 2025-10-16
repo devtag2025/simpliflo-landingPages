@@ -2,7 +2,6 @@
 
 import { ElementType, useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
 import { gsap } from 'gsap';
-import './TextType.css';
 
 interface TextTypeProps {
   className?: string;
@@ -63,6 +62,7 @@ const TextType = ({
   }, [variableSpeed, typingSpeed]);
 
   const getCurrentTextColor = () => {
+    if (textColors.length === 0) return '#ffffff';
     return textColors[currentTextIndex % textColors.length];
   };
 
@@ -173,16 +173,16 @@ const TextType = ({
     Component,
     {
       ref: containerRef,
-      className: `text-type ${className}`,
+      className: `inline-block whitespace-pre-wrap tracking-tight ${className}`,
       ...props
     },
-    <span className="text-type__content" style={{ color: getCurrentTextColor() }}>
+    <span className="inline" style={{ color: getCurrentTextColor() }}>
       {displayedText}
     </span>,
     showCursor && (
       <span
         ref={cursorRef}
-        className={`text-type__cursor ${cursorClassName} ${shouldHideCursor ? 'text-type__cursor--hidden' : ''}`}
+        className={`ml-1 inline-block opacity-100 ${shouldHideCursor ? 'hidden' : ''} ${cursorClassName}`}
       >
         {cursorCharacter}
       </span>

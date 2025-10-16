@@ -43,7 +43,7 @@ export default function ContactForm() {
 
   return (
     <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_SITE_KEY}>
-      <section className="w-full min-h-screen flex items-center justify-center px-6 pb-20 relative" id="contact">
+  <section className="w-full min-h-screen flex items-center justify-center px-6 pb-20 relative bg-[var(--canvas-0)]" id="contact">
         {/* Custom badge/branding for reCAPTCHA v3 */}
         <div className="absolute bottom-6 right-6 z-40 flex items-center gap-2 bg-white/80 rounded-xl px-3 py-2 shadow-md border border-gray-200">
           <svg
@@ -65,12 +65,12 @@ export default function ContactForm() {
             Protected by reCAPTCHA v3
           </span>
         </div>
-        <div className="w-full max-w-md mx-auto rounded-2xl shadow-xl border border-gray-100 bg-white/80 backdrop-blur flex flex-col justify-center py-6 sm:py-8 px-4 sm:px-6">
+  <div className="w-full max-w-md mx-auto rounded-2xl shadow-xl border border-[var(--canvas-50)] bg-[var(--canvas-0)]/80 backdrop-blur flex flex-col justify-center py-6 sm:py-8 px-4 sm:px-6">
           <div className="flex flex-col items-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-1 text-center text-purple-600">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-1 text-center text-[var(--ink-900)]">
               Contact Us
             </h2>
-            <p className="text-sm sm:text-base text-gray-600 max-w-md mx-auto text-center mb-4">
+            <p className="text-sm sm:text-base text-[var(--ink-800)] max-w-md mx-auto text-center mb-4">
               Have a question, suggestion, or need help? Fill out the form and our team will get back to you soon.
             </p>
           </div>
@@ -84,8 +84,8 @@ export default function ContactForm() {
                 type="text"
                 required
                 className={`rounded-full border-2 ${
-                  error && !fields.name ? "border-red-400" : "border-purple-200"
-                } focus:border-purple-400 focus:ring-2 focus:ring-purple-100 px-5 py-3 text-base outline-none transition placeholder-gray-400 bg-white shadow-sm`}
+                  error && !fields.name ? "border-red-400" : "border-[var(--canvas-50)]"
+                } focus:border-[var(--teal-hero)] focus:ring-2 focus:ring-[var(--canvas-50)] px-5 py-3 text-base outline-none transition placeholder-[var(--ink-800)] bg-[var(--canvas-0)] shadow-sm text-[var(--ink-900)]`}
                 placeholder="Name"
                 value={fields.name}
                 onChange={(e) => setFields(f => ({ ...f, name: e.target.value }))}
@@ -95,8 +95,8 @@ export default function ContactForm() {
                 type="email"
                 required
                 className={`rounded-full border-2 ${
-                  error && !fields.email ? "border-red-400" : "border-purple-200"
-                } focus:border-purple-400 focus:ring-2 focus:ring-purple-100 px-5 py-3 text-base outline-none transition placeholder-gray-400 bg-white shadow-sm`}
+                  error && !fields.email ? "border-red-400" : "border-[var(--canvas-50)]"
+                } focus:border-[var(--teal-hero)] focus:ring-2 focus:ring-[var(--canvas-50)] px-5 py-3 text-base outline-none transition placeholder-[var(--ink-800)] bg-[var(--canvas-0)] shadow-sm text-[var(--ink-900)]`}
                 placeholder="Email"
                 value={fields.email}
                 onChange={(e) => setFields(f => ({ ...f, email: e.target.value }))}
@@ -106,8 +106,8 @@ export default function ContactForm() {
                 required
                 rows={4}
                 className={`rounded-2xl border-2 ${
-                  error && !fields.message ? "border-red-400" : "border-purple-200"
-                } focus:border-purple-400 focus:ring-2 focus:ring-purple-100 px-5 py-3 text-base outline-none transition placeholder-gray-400 bg-white shadow-sm resize-none`}
+                  error && !fields.message ? "border-red-400" : "border-[var(--canvas-50)]"
+                } focus:border-[var(--teal-hero)] focus:ring-2 focus:ring-[var(--canvas-50)] px-5 py-3 text-base outline-none transition placeholder-[var(--ink-800)] bg-[var(--canvas-0)] shadow-sm resize-none text-[var(--ink-900)]`}
                 placeholder="Your Message"
                 value={fields.message}
                 onChange={(e) => setFields(f => ({ ...f, message: e.target.value }))}
@@ -120,7 +120,7 @@ export default function ContactForm() {
             </div>
             <button
               type="submit"
-              className="rounded-full px-7 py-3 text-base font-semibold bg-gradient-to-r from-purple-400 to-pink-400 text-white shadow-md transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-200 flex items-center justify-center w-full mt-2"
+              className="rounded-full px-7 py-3 text-base font-semibold bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] text-white shadow-md transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[var(--cyan-pop)] flex items-center justify-center w-full mt-2"
               disabled={submitted}
             >
               {submitted ? "Message Sent" : "Send Message"}

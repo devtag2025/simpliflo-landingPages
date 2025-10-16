@@ -28,12 +28,13 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         <div id="top"></div>
         <div className="relative w-full">
           {/* Background gradient only */}
           <div
-            className="absolute inset-0 -z-20 bg-gradient-to-r from-purple-100 via-white to-white w-full h-full"
+            className="absolute inset-0 -z-20 bg-gradient-to-r from-[var(--teal-hero)] via-[var(--canvas-0)] to-[var(--canvas-0)] w-full h-full"
             aria-hidden
           ></div>
 

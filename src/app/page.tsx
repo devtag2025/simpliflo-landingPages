@@ -1,3 +1,14 @@
+import { HeroSection } from "../components/home/HeroSection";
+import ValueSections from "@/components/home/ValueSection";
+import ShowcaseBlock from "@/components/home/showcase";
+import ContactForm from "@/components/home/ContactForm";
+import AboutPage from "@/components/home/about";
+import WhySimpliflo from "@/components/home/WhySimpliflo";
+import WhyItMatters from "@/components/home/WhyItMatters";
+import { HowItWorks } from "@/components/home/HowItWorks";
+import { Pricing } from "@/components/home/Pricing";
+import { TrustSection } from "@/components/home/TrustSection";
+
 
 export const metadata = {
   title: "Simpliflow – AI-First Outbound Platform",
@@ -30,19 +41,17 @@ export const metadata = {
   }
 };
 
-// The rest of your Home component
-import HeroSection from "../components/home/HeroSection";
-import ValueSections from "@/components/home/ValueSection";
-import ShowcaseBlock from "@/components/home/showcase";
-import ContactForm from "@/components/home/ContactForm";
-import AboutPage from "@/components/home/about";
-
 export default function Home() {
   return (
     <div className="relative z-10">
       <HeroSection />
       <AboutPage />
+      <WhySimpliflo />
+      <WhyItMatters />
+      <HowItWorks />
       <ValueSections />
+      <Pricing />
+      <TrustSection />
       <ShowcaseBlock />
       <ContactForm />
     </div>

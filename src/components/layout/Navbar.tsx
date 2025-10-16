@@ -1,32 +1,13 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-
+// Navigation items array
 const navItems = [
-  {
-    label: "Product",
-    dropdown: [
-      { label: "Overview", href: "/overview" },
-      { label: "Features", href: "/features" },
-      { label: "Integrations", href: "/integrations" },
-    ],
-  },
-  {
-    label: "Solutions",
-    dropdown: [
-      { label: "For Teams", href: "/teams" },
-      { label: "For Individuals", href: "/individuals" },
-    ],
-  },
-  {
-    label: "Resources",
-    dropdown: [
-      { label: "Docs", href: "/docs" },
-      { label: "Blog", href: "/blog" },
-      { label: "Community", href: "/community" },
-    ],
-  },
-  { label: "About Us", dropdown: null, href: "#about" },
+  { label: "Product", href: "/product" },
+  { label: "Features", href: "/features" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Help Center", href: "/help-center" },
+  { label: "Trust", href: "/trust" },
 ];
 
 function Dropdown({
@@ -56,13 +37,13 @@ function Dropdown({
 
   if (!open) return null;
   return (
-    <div className="absolute left-0 top-full mt-2 w-44 sm:w-48 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-white/20 z-20">
+    <div className="absolute left-0 top-full mt-2 w-44 sm:w-48 bg-[var(--canvas-0)] backdrop-blur-md rounded-2xl shadow-xl border border-[var(--champagne)] z-20">
       <ul className="py-2">
         {items.map((item) => (
           <li key={item.label}>
             <Link
               href={item.href}
-              className="block px-4 sm:px-5 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600 rounded-xl transition"
+              className="block px-4 sm:px-5 py-2 text-[var(--ink-800)] hover:bg-[var(--canvas-50)] hover:text-[var(--teal-hero)] rounded-xl transition"
               tabIndex={0}
             >
               {item.label}
@@ -121,7 +102,7 @@ export default function ModernNavbar() {
             href="/"
             className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/90 backdrop-blur-md hover:bg-white transition shadow-lg"
           >
-            <span className="w-7 h-7 bg-gradient-to-tr from-purple-400 to-indigo-300 rounded-full flex items-center justify-center">
+            <span className="w-7 h-7 bg-gradient-to-tr from-[var(--teal-hero)] to-[var(--cyan-pop)] rounded-full flex items-center justify-center">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <circle cx="12" cy="12" r="10" fill="url(#grad1)" />
                 <defs>
@@ -139,12 +120,12 @@ export default function ModernNavbar() {
                 </defs>
               </svg>
             </span>
-            <span className="font-semibold tracking-widest text-gray-900 text-base drop-shadow-sm">
+            <span className="font-semibold tracking-widest text-[var(--ink-900)] text-base drop-shadow-sm">
               SIMPLIFLOW
             </span>
           </Link>
           <button
-            className="inline-flex items-center justify-center rounded-full font-medium text-base bg-white/90 backdrop-blur-md text-gray-700 hover:bg-white transition shadow-lg"
+            className="inline-flex items-center justify-center rounded-full font-medium text-base bg-white/90 backdrop-blur-md text-[var(--teal-hero)] hover:bg-white transition shadow-lg"
             aria-label="Open menu"
             onClick={() => setMobileOpen((v) => !v)}
             style={{ minWidth: 0, padding: "0.5rem", width: "2.5rem", height: "2.5rem" }}
@@ -162,10 +143,10 @@ export default function ModernNavbar() {
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex flex-wrap items-center bg-white/90 backdrop-blur-md rounded-full px-2 md:px-3 xl:px-4 py-2 gap-2 md:gap-4 xl:gap-5 min-h-[40px] shadow-2xl">
-          <div className="flex flex-wrap items-center gap-2 md:gap-4 xl:gap-5 text-base font-semibold text-gray-700 relative">
-            <Link href="/" className="flex items-center gap-2 px-2 py-1 rounded-xl hover:bg-purple-50 transition">
-              <span className="w-6 h-6 bg-gradient-to-tr from-purple-400 to-indigo-300 rounded-full flex items-center justify-center">
+  <div className="hidden lg:flex flex-wrap items-center bg-white/90 backdrop-blur-md rounded-full px-2 md:px-3 xl:px-4 py-2 gap-2 md:gap-4 xl:gap-5 min-h-[40px] shadow-2xl">
+          <div className="flex flex-wrap items-center gap-2 md:gap-4 xl:gap-5 text-base font-semibold text-[var(--ink-900)] relative">
+            <Link href="/" className="flex items-center gap-2 px-2 py-1 rounded-xl hover:bg-[var(--canvas-50)] transition">
+              <span className="w-6 h-6 bg-gradient-to-tr from-[var(--teal-hero)] to-[var(--cyan-pop)] rounded-full flex items-center justify-center">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                   <circle cx="12" cy="12" r="10" fill="url(#grad2)" />
                   <defs>
@@ -176,61 +157,29 @@ export default function ModernNavbar() {
                   </defs>
                 </svg>
               </span>
-              <span className="font-semibold tracking-widest text-gray-700 text-base">SIMPLIFLOW</span>
+              <span className="font-semibold tracking-widest text-[var(--ink-900)] text-base">SIMPLIFLOW</span>
             </Link>
-            {navItems.map((item) => {
-              const ref = useRef<HTMLDivElement>(null!);
-              dropdownRefs.current[item.label] = ref.current;
-              return (
-                <div
-                  key={item.label}
-                  className="relative flex items-center"
-                  ref={ref}
+            {navItems.map((item) => (
+              <div key={item.label} className="relative flex items-center">
+                <Link
+                  href={item.href}
+                  className="flex items-center gap-1 px-3 py-2 rounded-full hover:bg-[var(--canvas-50)] transition text-[var(--ink-900)]"
                 >
-                  {item.dropdown ? (
-                    <>
-                      <button
-                        className="flex items-center gap-1 hover:text-purple-600 px-3 py-2 rounded-full hover:bg-purple-50 transition cursor-pointer text-gray-700"
-                        aria-haspopup={true}
-                        aria-expanded={dropdownOpen === item.label}
-                        onClick={() =>
-                          setDropdownOpen(
-                            dropdownOpen === item.label ? null : item.label
-                          )
-                        }
-                      >
-                        <span>{item.label}</span>
-                        <span className="text-xs">▼</span>
-                      </button>
-                      <Dropdown
-                        items={item.dropdown}
-                        open={dropdownOpen === item.label}
-                        anchorRef={ref}
-                        closeDropdown={() => setDropdownOpen(null)}
-                      />
-                    </>
-                  ) : (
-                    <a
-                      href={item.href}
-                      className="flex items-center gap-1 hover:text-purple-600 px-3 py-2 rounded-full hover:bg-purple-50 transition text-gray-700"
-                    >
-                      {item.label}
-                    </a>
-                  )}
-                </div>
-              );
-            })}
+                  {item.label}
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Desktop Actions */}
         <div className="hidden lg:flex flex-wrap items-center bg-white/90 backdrop-blur-md rounded-full px-2 md:px-3 xl:px-4 py-2 gap-2 md:gap-4 min-h-[40px] shadow-2xl">
-          <Link href="/login" className="inline-flex items-center justify-center rounded-full font-semibold text-base px-4 py-2 min-w-[100px] h-10 bg-transparent text-gray-700 hover:bg-purple-50 transition">
+          <Link href="/login" className="inline-flex items-center justify-center rounded-full font-semibold text-base px-4 py-2 min-w-[100px] h-10 bg-transparent text-[#0E7C86] hover:bg-[var(--canvas-50)] transition">
             Login
           </Link>
           <Link
             href="/demo"
-            className="inline-flex items-center justify-center rounded-full font-semibold text-base px-4 py-2 min-w-[100px] h-10 bg-gradient-to-r from-purple-500 to-pink-400 text-white hover:opacity-90 transition"
+            className="inline-flex items-center justify-center rounded-full font-semibold text-base px-4 py-2 min-w-[100px] h-10 bg-[#0E7C86] text-white hover:opacity-90 transition"
           >
             Book a Demo
             <span className="ml-2 w-7 h-7 rounded-full bg-white/30 flex items-center justify-center">
@@ -266,54 +215,40 @@ export default function ModernNavbar() {
             <div className="px-6 pb-2">
               <Link
                 href="/"
-                className="flex items-center gap-2 px-2 py-2 rounded-xl bg-purple-50"
+                className="flex items-center gap-2 px-2 py-2 rounded-xl bg-[var(--canvas-50)]"
               >
-                <span className="w-6 h-6 bg-gradient-to-tr from-purple-400 to-indigo-300 rounded-full flex items-center justify-center">
+                <span className="w-6 h-6 bg-gradient-to-tr from-[var(--teal-hero)] to-[var(--cyan-pop)] rounded-full flex items-center justify-center">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                     <circle cx="12" cy="12" r="10" fill="url(#grad3)" />
                     <defs>
                       <linearGradient id="grad3" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#a78bfa"/>
-                        <stop offset="1" stopColor="#818cf8"/>
+                        <stop stopColor="var(--teal-hero)"/>
+                        <stop offset="1" stopColor="var(--cyan-pop)"/>
                       </linearGradient>
                     </defs>
                   </svg>
                 </span>
-                <span className="font-semibold tracking-widest text-gray-900 text-base drop-shadow">
-                  SIMPLIFLOW
+                <span className="font-semibold tracking-widest text-[var(--ink-900)] text-base drop-shadow">
+                  SIMPLIFLO
                 </span>
               </Link>
             </div>
             <nav className="flex flex-col gap-2 px-6 pb-6">
               {navItems.map((item) => (
-                <div key={item.label}>
-                  <a
-                    href={item.href}
-                    className="items-center justify-center rounded-full font-medium text-base px-4 py-2 min-w-[100px] h-10 bg-gray-100 text-gray-700 hover:bg-purple-100 transition block text-left"
-                  >
-                    {item.label}
-                  </a>
-                  {item.dropdown && (
-                    <div className="ml-4 flex flex-col">
-                      {item.dropdown.map((sub) => (
-                        <Link
-                          key={sub.label}
-                          href={sub.href}
-                          className="py-1 text-sm text-gray-600 hover:text-purple-500 transition"
-                        >
-                          {sub.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="items-center justify-center rounded-full font-medium text-base px-4 py-2 min-w-[100px] h-10 bg-[var(--canvas-50)] text-[var(--ink-900)] hover:bg-[var(--canvas-0)] transition block text-left"
+                >
+                  {item.label}
+                </Link>
               ))}
-              <Link href="/login" className="inline-flex items-center justify-center rounded-full font-medium text-base px-4 py-2 min-w-[100px] h-10 bg-gray-100 text-gray-700 hover:bg-purple-100 transition">
+              <Link href="/login" className="inline-flex items-center justify-center rounded-full font-medium text-base px-4 py-2 min-w-[100px] h-10 bg-[var(--canvas-50)] text-[var(--teal-hero)] hover:bg-[var(--canvas-0)] transition">
                 Login
               </Link>
               <Link
                 href="/demo"
-                className="inline-flex items-center justify-center rounded-full font-medium text-base px-4 py-2 min-w-[100px] h-10 bg-gradient-to-r from-purple-400 to-pink-400 text-white hover:opacity-90 transition"
+                className="inline-flex items-center justify-center rounded-full font-medium text-base px-4 py-2 min-w-[100px] h-10 bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] text-white hover:opacity-90 transition"
               >
                 Book a Demo
                 <span className="ml-2 w-7 h-7 rounded-full bg-white/30 flex items-center justify-center">

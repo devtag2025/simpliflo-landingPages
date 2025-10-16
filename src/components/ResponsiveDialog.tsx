@@ -37,7 +37,7 @@ const ResponsiveDialog: React.FC<ResponsiveDialogProps> = ({
     // 💻 Desktop: use Shadcn Dialog
     return (
       <Dialog open={isOpen} onOpenChange={onChange}>
-        <DialogContent className="w-full max-w-4xl p-0 gap-0 overflow-hidden">
+        <DialogContent className="w-full max-w-4xl p-0 gap-0 overflow-hidden bg-white border border-ink-900">
           <DialogHeader>
             {/* Hidden title for accessibility */}
             <DialogTitle className="sr-only">Simpliflow Modal</DialogTitle>
@@ -51,7 +51,7 @@ const ResponsiveDialog: React.FC<ResponsiveDialogProps> = ({
   // 📱 Mobile: use Shadcn Drawer
   return (
     <Drawer open={isOpen} onOpenChange={onChange}>
-      <DrawerContent className="max-h-[95vh] overflow-hidden rounded-t-2xl shadow-lg">
+      <DrawerContent className="max-h-[95vh] overflow-hidden rounded-t-2xl shadow-lg bg-white border-t border-ink-900">
         <DrawerHeader>
           {/* Hidden title for accessibility */}
           <DrawerTitle className="sr-only">Simpliflow Drawer</DrawerTitle>

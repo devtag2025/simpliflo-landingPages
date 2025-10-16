@@ -14,38 +14,57 @@ const pageContent: Record<
   docs: { title: "Docs", description: <>Documentation resources.</> },
   blog: { title: "Blog", description: <>Our blog posts.</> },
   community: { title: "Community", description: <>Join our community.</> },
-  pricing: { title: "Pricing", description: <>See pricing details.</> },
   about: {
     title: "About Us",
     description: (
-      <div className="space-y-4">
-        <p>
-          Welcome to Simpliflow—where automation meets accounting and business excellence.
-          <br />
-          Our mission is to empower organizations to streamline financial operations, reduce manual workload, and make smarter, faster decisions.
-        </p>
-        <div>
-          <strong className="text-purple-500">Who are we?</strong>
-          <br />
-          We are a passionate team of developers, accountants, and business professionals dedicated to transforming accounting and business management through intelligent automation.
+      <section className="w-full flex flex-col items-center text-center gap-6 py-2">
+        <div className="mb-2">
+          <span className="inline-block text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] bg-clip-text text-transparent drop-shadow-sm mb-2">Welcome to Simpliflow</span>
+          <p className="mt-2 text-base sm:text-lg text-[var(--ink-900)] max-w-xl mx-auto">
+            Where automation meets accounting and business excellence.<br />
+            Our mission is to empower organizations to streamline financial operations, reduce manual workload, and make smarter, faster decisions.
+          </p>
         </div>
-        <div>
-          <strong className="text-purple-500">What do we do?</strong>
-          <br />
-          Our platform automates accounting tasks, reconciliations, reporting, and business workflows—connecting all your tools so your team can focus on growth, not grunt work.
+        <div className="bg-gradient-to-br from-[var(--canvas-50)] via-white to-[var(--cyan-pop)] rounded-2xl shadow-xl p-6 sm:p-8 w-full max-w-lg mx-auto">
+          <h3 className="font-bold text-lg sm:text-xl mb-2 bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] bg-clip-text text-transparent">Who are we?</h3>
+          <p className="text-sm sm:text-base text-[var(--ink-900)]">
+            We are a passionate team of developers, accountants, and business professionals dedicated to transforming accounting and business management through intelligent automation.
+          </p>
         </div>
-        <div>
-          <strong className="text-purple-500">Why choose us?</strong>
-          <br />
-          Simpliflow is secure, easy to use, and designed for real business needs. Whether you are a startup, small business, or enterprise, our solutions scale with you and help you stay compliant and efficient.
+        <div className="bg-gradient-to-br from-[var(--canvas-50)] via-white to-[var(--cyan-pop)] rounded-2xl shadow-xl p-6 sm:p-8 w-full max-w-lg mx-auto">
+          <h3 className="font-bold text-lg sm:text-xl mb-2 bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] bg-clip-text text-transparent">What do we do?</h3>
+          <p className="text-sm sm:text-base text-[var(--ink-900)]">
+            Our platform automates accounting tasks, reconciliations, reporting, and business workflows—connecting all your tools so your team can focus on growth, not grunt work.
+          </p>
         </div>
-        <div className="mt-4 text-center">
-          <span className="inline-block text-purple-500 font-semibold bg-purple-50 rounded-full px-4 py-2 text-xs sm:text-sm shadow transition hover:bg-purple-100 hover:scale-105">
-            Automate your accounting. Accelerate your business.
+        <div className="bg-gradient-to-br from-[var(--canvas-50)] via-white to-[var(--cyan-pop)] rounded-2xl shadow-xl p-6 sm:p-8 w-full max-w-lg mx-auto">
+          <h3 className="font-bold text-lg sm:text-xl mb-2 bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] bg-clip-text text-transparent">Why choose us?</h3>
+          <p className="text-sm sm:text-base text-[var(--ink-900)]">
+            Simpliflow is secure, easy to use, and designed for real business needs. Whether you are a startup, small business, or enterprise, our solutions scale with you and help you stay compliant and efficient.
+          </p>
+        </div>
+        {/* Trust signals */}
+        <div className="flex flex-wrap justify-center items-center gap-4 mt-4">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] text-white text-xs sm:text-sm font-semibold shadow">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" /></svg>
+            GDPR Compliant
+          </span>
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] text-white text-xs sm:text-sm font-semibold shadow">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" /></svg>
+            99.99% Uptime
+          </span>
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] text-white text-xs sm:text-sm font-semibold shadow">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+            Trusted by 100+ Businesses
           </span>
         </div>
-      </div>
+      </section>
     ),
+  },
+
+  product: { 
+    title: "Product", 
+    description: <>Product information coming soon.</> 
   },
 };
 
@@ -71,13 +90,13 @@ export default function DynamicPage() {
 
   return (
     <main className="w-full flex justify-center items-center min-h-[70vh] py-6 sm:py-10 md:py-16 bg-transparent">
-      <div className="w-full max-w-lg mx-auto px-2 sm:px-4">
+      <div className="w-full max-w-5xl mx-auto px-2 sm:px-4">
         {content ? (
-          <div className="rounded-2xl shadow-xl border border-gray-100 bg-white/80 backdrop-blur px-4 py-7 sm:px-8 md:px-10 md:py-12 flex flex-col items-center overflow-auto max-h-[80vh] animate-fadein">
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight mb-3 text-center bg-gradient-to-r from-purple-500 via-pink-400 to-red-400 bg-clip-text text-transparent drop-shadow-lg transition-all duration-300">
+          <div className="rounded-2xl shadow-xl border border-gray-100 bg-white/80 backdrop-blur px-4 py-7 sm:px-8 md:px-10 md:py-12 flex flex-col items-center animate-fadein">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight mb-3 text-center text-[var(--teal-hero)] drop-shadow-lg transition-all duration-300">
               {content.title}
             </h1>
-            <div className="text-base sm:text-lg text-gray-700 max-w-md mx-auto text-center mb-5 transition-all">
+            <div className="text-base sm:text-lg text-gray-700 w-full mx-auto text-center mb-5 transition-all">
               {content.description}
             </div>
           </div>

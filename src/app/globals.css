@@ -1,47 +1,44 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+
+/* Removed invalid @custom-variant dark (&:is(.dark *)); */
 
 :root {
   --font-size: 16px;
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: #ffffff;
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --input-background: #ffffff;
+  --teal-hero: #14B8A6;
+  --teal-deep: #0E7C86;
+  --teal-ocean: #0B5351;
+  --cyan-pop: #22D3EE;
+  --champagne: #C8A97E;
+  --ink-900: #0A1014;
+  --ink-800: #141A1F;
+  --ink-700: #2C3338;
+  --canvas-0: #F7F7F5;
+  --canvas-50: #F2F5F4;
+  --canvas-100: #E7E7E5;
+  --white: #FFFFFF;
+  --primary: var(--teal-hero);
+  --primary-foreground: var(--white);
+  --secondary: var(--teal-deep);
+  --secondary-foreground: var(--white);
+  --accent: var(--cyan-pop);
+  --accent-foreground: var(--white);
+  --background: var(--canvas-0);
+  --foreground: var(--ink-900);
+  --card: var(--canvas-50);
+  --card-foreground: var(--ink-900);
+  --border: var(--champagne);
+  --input: var(--canvas-50);
+  --input-background: var(--white);
   --switch-background: #cbd5e1;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --ring: var(--cyan-pop);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
 }
 
 .dark {
@@ -80,8 +77,7 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
-
-@theme inline {
+:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -123,13 +119,10 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
   body {
-    @apply bg-background text-foreground;
-    font-family: "__DM_Sans_0eeb07", "__DM_Sans_Fallback_0eeb07", sans-serif;
+    background-color: var(--canvas-0);
+    color: var(--foreground);
+    font-family: 'DM Serif Text','Montserrat', sans-serif;
   }
 }
 
@@ -191,11 +184,27 @@
 html {
   font-size: var(--font-size);
   scroll-behavior: smooth;
+  background-color: var(--canvas-0);
 }
 
-/* Performance optimizations */
-* {
-  will-change: auto;
+/* Card background utility */
+.bg-canvas-50 {
+  background-color: var(--canvas-50);
+}
+
+/* Secondary text utility */
+.text-ink-800 {
+  color: var(--ink-800);
+}
+
+/* Performance optimizations: Only apply will-change to animated elements */
+.animate,
+.transition,
+.transition-all,
+.transition-colors,
+.transition-transform,
+.transition-opacity {
+  will-change: transform, opacity;
 }
 
 .transition-all,
@@ -228,27 +237,27 @@ html {
     box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15);
   }
 
-/* Smooth scrollbars */
-* {
+/* Smooth scrollbars: Only apply to .scrollable containers */
+.scrollable {
   scrollbar-width: thin;
   scrollbar-color: rgba(155, 155, 155, 0.7) transparent;
 }
 
-*::-webkit-scrollbar {
+.scrollable::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
-*::-webkit-scrollbar-track {
+.scrollable::-webkit-scrollbar-track {
   background: transparent;
 }
 
-*::-webkit-scrollbar-thumb {
+.scrollable::-webkit-scrollbar-thumb {
   background-color: rgba(155, 155, 155, 0.7);
   border-radius: 3px;
 }
 
-*::-webkit-scrollbar-thumb:hover {
+.scrollable::-webkit-scrollbar-thumb:hover {
   background-color: rgba(155, 155, 155, 0.9);
 }
 
@@ -275,3 +284,21 @@ html {
     backdrop-filter: blur(4px);
   }
 }
+
+/* Custom fade-in animation for Trust page */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+

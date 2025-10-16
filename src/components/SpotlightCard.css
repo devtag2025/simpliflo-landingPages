@@ -1,13 +1,13 @@
 .card-spotlight {
   position: relative;
   border-radius: 1.5rem;
-  border: 1px solid rgba(168, 85, 247, 0.2);
-  background: linear-gradient(135deg, #faf5ff, #fff0f7);
+  border: 1px solid var(--canvas-50);
+  background: var(--canvas-50, #F2F5F4);
   padding: 2rem;
   overflow: hidden;
   --mouse-x: 50%;
   --mouse-y: 50%;
-  --spotlight-color: rgba(168, 85, 247, 0.2);
+  --spotlight-color: rgba(13, 148, 136, 0.15); /* soft teal */
   transition: all 0.3s ease;
 }
 
@@ -31,6 +31,6 @@
 }
 
 .card-spotlight:hover {
-  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
+  box-shadow: 0 10px 30px rgba(13, 148, 136, 0.15);
   transform: translateY(-4px);
 }
