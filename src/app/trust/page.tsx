@@ -1,14 +1,11 @@
 "use client"
 
 import React from 'react'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
 import { TextEffect } from '@/components/ui/text-effect'
 
 export default function TrustPage() {
     return (
         <div className="min-h-screen bg-white">
-            <Navbar />
             
             <main className="pt-24 pb-16">
                 <div className="mx-auto max-w-4xl px-4 sm:px-6">
@@ -310,7 +307,7 @@ export default function TrustPage() {
                                     <span>Some providers may process data outside the UK or EEA. Where this occurs, we use approved safeguards such as Standard Contractual Clauses or the UK International Data Transfer Addendum.</span>
                                 </li>
                                 <li className="flex items-start">
-                                    <span className="mr-3 text-[#0E7C86] font-bold">•</span>
+                                  <span className="mr-3 text-[#0E7C86] font-bold">•</span>
                                     <span>We keep a public list of sub-processors with purpose and region and we update it when providers change.</span>
                                 </li>
                             </ul>
@@ -369,8 +366,6 @@ export default function TrustPage() {
                     </section>
                 </div>
             </main>
-
-            <Footer />
         </div>
     )
 }
