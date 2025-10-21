@@ -37,7 +37,7 @@ function Dropdown({
 
   if (!open) return null;
   return (
-    <div className="absolute left-0 top-full mt-2 w-44 sm:w-48 bg-[var(--canvas-0)] backdrop-blur-md rounded-2xl shadow-xl border border-[var(--champagne)] z-20">
+    <div className="absolute left-0 top-full  w-44 sm:w-48 bg-[var(--canvas-0)] backdrop-blur-md rounded-2xl shadow-xl border border-[var(--champagne)] z-20">
       <ul className="py-2">
         {items.map((item) => (
           <li key={item.label}>
@@ -94,17 +94,17 @@ export default function ModernNavbar() {
   }, [dropdownOpen]);
 
   return (
-    <div className="w-full py-5 flex justify-center fixed top-0 z-50 pointer-events-none">
+    <div className="w-full py-2 flex justify-center fixed top-0 z-50 pointer-events-none">
       <nav className="w-full max-w-[1600px] flex flex-wrap justify-between items-center px-2 md:px-6 xl:px-8 min-h-[48px] pointer-events-auto gap-4">
         {/* Logo and hamburger for mobile */}
         <div className="flex w-full items-center justify-between lg:hidden">
           <Link
             href="/"
-            className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/90 backdrop-blur-md hover:bg-white transition shadow-lg"
+            className="flex items-center px-3 py-2 rounded-xl bg-white/90 backdrop-blur-md"
           >
-            <img src="/logo.png" alt="Simpliflow Logo" className="w-12 h-12 object-contain" />
-            <span className="font-semibold tracking-widest text-[var(--ink-900)] text-base drop-shadow-sm">
-              SIMPLIFLOW
+            <img src="/logo.png" alt="Simpliflo Logo" className="w-12 h-12 object-contain" />
+            <span className="font-semibold text-[var(--ink-900)] text-base drop-shadow-sm">
+              SIMPLIFLO
             </span>
           </Link>
           <button
@@ -128,15 +128,15 @@ export default function ModernNavbar() {
         {/* Desktop Menu */}
   <div className="hidden lg:flex flex-wrap items-center bg-white/90 backdrop-blur-md rounded-full px-2 md:px-3 xl:px-4 gap-2 md:gap-4 xl:gap-5 min-h-[40px] shadow-2xl">
           <div className="flex flex-wrap items-center gap-2 md:gap-4 xl:gap-5 text-base font-semibold text-[var(--ink-900)] relative">
-            <Link href="/" className="flex items-center gap-2 px-2 py-1 rounded-xl hover:bg-[var(--canvas-50)] transition">
-              <img src="/logo.png" alt="Simpliflow Logo" className="w-12 h-12 object-contain" />
-              <span className="font-semibold tracking-widest text-[var(--ink-900)] text-base">SIMPLIFLOW</span>
+            <Link href="/" className="flex items-center px-2 py-1 rounded-xl ">
+              <img src="/logo.png" alt="Simpliflo Logo" className="w-12 h-12 object-contain" />
+              <span className="font-semibold text-[var(--ink-900)] text-base">SIMPLIFLO</span>
             </Link>
             {navItems.map((item) => (
               <div key={item.label} className="relative flex items-center">
                 <Link
                   href={item.href}
-                  className="flex items-center gap-1 px-3 py-2 rounded-full hover:bg-[var(--canvas-50)] transition text-[var(--ink-900)]"
+                  className="flex items-center gap-1 px-3 py-2 rounded-full transition text-[var(--ink-900)] hover:bg-[var(--canvas-50)] hover:text-[var(--teal-hero)]"
                 >
                   {item.label}
                 </Link>
@@ -151,10 +151,10 @@ export default function ModernNavbar() {
             Login
           </Link>
           <Link
-            href="/demo"
-            className="inline-flex items-center justify-center rounded-full font-semibold text-base px-4 py-2 min-w-[100px] h-10 bg-[#0E7C86] text-white hover:opacity-90 transition"
+            href="/pricing"
+            className="inline-flex items-center justify-center rounded-full font-semibold text-base px-4 py-2 min-w-[100px] h-10 text-white transition bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] hover:opacity-90"
           >
-            Book a Demo
+            Get Started
             <span className="ml-2 w-7 h-7 rounded-full bg-white/30 flex items-center justify-center">
               <svg width="16" height="16" fill="none">
                 <path d="M7 5l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -188,11 +188,11 @@ export default function ModernNavbar() {
             <div className="px-6 pb-2">
               <Link
                 href="/"
-                className="flex items-center gap-2 px-2 py-2 rounded-xl bg-[var(--canvas-50)]"
+                className="flex items-center px-2 py-2 rounded-xl bg-[var(--canvas-50)]"
               >
-                <img src="/logo.png" alt="Simpliflow Logo" className="w-6 h-6 object-contain" />
-                <span className="font-semibold tracking-widest text-[var(--ink-900)] text-base drop-shadow">
-                  SIMPLIFLOW
+                <img src="/logo.png" alt="Simpliflo Logo" className="w-6 h-6 object-contain" />
+                <span className="font-semibold text-[var(--ink-900)] text-base drop-shadow">
+                  SIMPLIFLO
                 </span>
               </Link>
             </div>
@@ -201,7 +201,7 @@ export default function ModernNavbar() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="items-center justify-center rounded-full font-medium text-base px-4 py-2 min-w-[100px] h-10 bg-[var(--canvas-50)] text-[var(--ink-900)] hover:bg-[var(--canvas-0)] transition block text-left"
+                  className="items-center justify-center rounded-full font-medium text-base px-4 py-2 min-w-[100px] h-10 bg-[var(--canvas-50)] text-[var(--ink-900)] hover:bg-[var(--canvas-0)] hover:text-[var(--teal-hero)] transition block text-left"
                 >
                   {item.label}
                 </Link>
@@ -210,10 +210,10 @@ export default function ModernNavbar() {
                 Login
               </Link>
               <Link
-                href="/demo"
+                href="/pricing"
                 className="inline-flex items-center justify-center rounded-full font-medium text-base px-4 py-2 min-w-[100px] h-10 bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] text-white hover:opacity-90 transition"
               >
-                Book a Demo
+                Get Started
                 <span className="ml-2 w-7 h-7 rounded-full bg-white/30 flex items-center justify-center">
                   <svg width="16" height="16" fill="none">
                     <path d="M7 5l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

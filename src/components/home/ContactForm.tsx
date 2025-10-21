@@ -67,7 +67,7 @@ export default function ContactForm() {
         </div>
   <div className="w-full max-w-md mx-auto rounded-2xl shadow-xl border border-[var(--canvas-50)] bg-[var(--canvas-0)]/80 backdrop-blur flex flex-col justify-center py-6 sm:py-8 px-4 sm:px-6">
           <div className="flex flex-col items-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-1 text-center text-[var(--ink-900)]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-1 text-center bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] bg-clip-text text-transparent">
               Contact Us
             </h2>
             <p className="text-sm sm:text-base text-[var(--ink-800)] max-w-md mx-auto text-center mb-4">

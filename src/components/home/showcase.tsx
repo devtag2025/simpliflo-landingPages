@@ -68,7 +68,7 @@ export default function ShowcaseBlock() {
   return (
     <section className="relative z-10 flex flex-col items-center py-8 sm:py-16 px-2 sm:px-6 overflow-hidden min-h-screen justify-center bg-[var(--canvas-0)]">
       <div className="relative z-10 text-center mb-6 sm:mb-10">
-        <h2 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-[var(--ink-900)] mb-2 sm:mb-3 tracking-tight">
+        <h2 className="bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] bg-clip-text text-transparent text-xl sm:text-3xl md:text-4xl font-extrabold mb-2 sm:mb-3 tracking-tight">
           See the Power of Simpliflo
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-[var(--ink-800)] max-w-xl mx-auto">
@@ -107,7 +107,7 @@ export default function ShowcaseBlock() {
               >
                 <span>{feature.icon}</span>
                 <div>
-                  <h3 className="font-semibold text-base sm:text-lg text-[var(--ink-900)] mb-1">{feature.title}</h3>
+                  <h3 className="bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] bg-clip-text text-transparent font-semibold text-base sm:text-lg mb-1">{feature.title}</h3>
                   <p className="text-[var(--ink-800)] text-sm sm:text-base leading-relaxed">{feature.description}</p>
                 </div>
               </div>

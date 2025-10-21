@@ -105,18 +105,18 @@ export const Pricing: React.FC = () => {
 
                 {/* Add-ons */}
                 <div className="max-w-3xl mx-auto mb-8">
-                    <h3 className="text-2xl font-bold text-ink-900 mb-6 text-center">Add-ons</h3>
+                    <h3 className="text-2xl font-bold text-ink-900 mb-6 text-center">Add ons</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="border border-ink-900 rounded-xl p-6 bg-white">
                             <div className="flex justify-between items-center">
                                 <span className="text-ink-900 font-semibold">Extra user</span>
-                                <span className="text-ink-900 font-bold">£5/month</span>
+                                <span className="text-ink-900 font-bold">£5 per month</span>
                             </div>
                         </div>
                         <div className="border border-ink-900 rounded-xl p-6 bg-white">
                             <div className="flex justify-between items-center">
                                 <span className="text-ink-900 font-semibold">Extra WhatsApp number</span>
-                                <span className="text-ink-900 font-bold">£12/month</span>
+                                <span className="text-ink-900 font-bold">£12 per month</span>
                             </div>
                         </div>
                     </div>

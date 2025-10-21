@@ -117,45 +117,45 @@ const AnimationComponent: React.FC<{
   per: 'line' | 'word' | 'char';
   segmentWrapperClassName?: string;
 }> = React.memo(({ segment, variants, per, segmentWrapperClassName }) => {
-  const content =
-    per === 'line' ? (
-      <motion.span variants={variants} className='block'>
-        {segment}
-      </motion.span>
-    ) : per === 'word' ? (
+  // Helper to merge classes
+  const merge = (...classes: (string | undefined)[]) => classes.filter(Boolean).join(' ');
+
+  if (per === 'line') {
+    return (
       <motion.span
-        aria-hidden='true'
         variants={variants}
-        className='inline-block whitespace-pre'
+        className={merge('block', segmentWrapperClassName)}
       >
         {segment}
       </motion.span>
-    ) : (
+    );
+  } else if (per === 'word') {
+    return (
+      <motion.span
+        aria-hidden='true'
+        variants={variants}
+        className={merge('inline-block whitespace-pre', segmentWrapperClassName)}
+      >
+        {segment}
+      </motion.span>
+    );
+  } else {
+    // char
+    return (
       <motion.span className='inline-block whitespace-pre'>
         {segment.split('').map((char, charIndex) => (
           <motion.span
             key={`char-${charIndex}`}
             aria-hidden='true'
             variants={variants}
-            className='inline-block whitespace-pre'
+            className={merge('inline-block whitespace-pre', segmentWrapperClassName)}
           >
             {char}
           </motion.span>
         ))}
       </motion.span>
     );
-
-  if (!segmentWrapperClassName) {
-    return content;
   }
-
-  const defaultWrapperClassName = per === 'line' ? 'block' : 'inline-block';
-
-  return (
-    <span className={cn(defaultWrapperClassName, segmentWrapperClassName)}>
-      {content}
-    </span>
-  );
 });
 
 AnimationComponent.displayName = 'AnimationComponent';

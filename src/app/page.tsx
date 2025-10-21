@@ -8,6 +8,10 @@ import WhyItMatters from "@/components/home/WhyItMatters";
 import { HowItWorks } from "@/components/home/HowItWorks";
 import { Pricing } from "@/components/home/Pricing";
 import { TrustSection } from "@/components/home/TrustSection";
+import { WhoWeServe } from "@/components/home/WhoWeServe";
+import ChallengesOpportunities from "@/components/home/ChallengesOpportunities";
+import WhatYouCanDo from "@/components/home/WhatYouCanDo";
+import SecurityHighlights from "@/components/home/SecurityHighlights";
 
 
 export const metadata = {
@@ -46,14 +50,17 @@ export default function Home() {
     <div className="relative z-10">
       <HeroSection />
       <AboutPage />
+      <WhoWeServe />
       <WhySimpliflo />
+      <ChallengesOpportunities />
+      <WhatYouCanDo />  
       <WhyItMatters />
       <HowItWorks />
       <ValueSections />
       <Pricing />
-      <TrustSection />
       <ShowcaseBlock />
       <ContactForm />
+      <SecurityHighlights />
     </div>
   );
 }

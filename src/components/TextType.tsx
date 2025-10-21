@@ -176,7 +176,10 @@ const TextType = ({
       className: `inline-block whitespace-pre-wrap tracking-tight ${className}`,
       ...props
     },
-    <span className="inline" style={{ color: getCurrentTextColor() }}>
+    <span
+      className="inline bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] bg-clip-text text-transparent"
+      style={{ color: undefined }}
+    >
       {displayedText}
     </span>,
     showCursor && (

@@ -93,7 +93,7 @@ export default function ValueSlider() {
                     <div className="w-14 h-14 rounded-xl flex items-center justify-center mr-4">
                       {valueProps[activeIndex].icon}
                     </div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--ink-900)]">
+                    <h3 className="bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] bg-clip-text text-transparent text-xl sm:text-2xl md:text-3xl font-bold">
                       {valueProps[activeIndex].title}
                     </h3>
                   </div>
@@ -127,7 +127,7 @@ export default function ValueSlider() {
   <div className="mt-16 bg-gradient-to-r from-[var(--canvas-50)] to-[var(--canvas-0)] rounded-2xl p-6 border border-[var(--canvas-50)] w-full max-w-3xl shadow-sm">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="md:w-2/3 text-center md:text-left">
-              <h3 className="text-lg font-bold text-[var(--ink-900)] mb-1">
+              <h3 className="bg-gradient-to-r from-[var(--teal-hero)] to-[var(--cyan-pop)] bg-clip-text text-transparent text-lg font-bold mb-1">
                 Multi-Layered Security Architecture
               </h3>
               <p className="text-[var(--ink-800)] text-sm sm:text-base">
