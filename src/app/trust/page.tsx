@@ -351,7 +351,7 @@ export default function TrustPage() {
                                 We will respond in a timely manner and we will provide additional details on our data practices on request.
                             </p>
                             <p className="text-[var(--ink-900)]/80 text-lg leading-relaxed mt-4">
-                                For direct support, please email <a href="mailto:support@simpliflo.com" className="underline text-[var(--teal-deep)]">support@simpliflo.com</a>.
+                                For direct support, please email <a href="mailto:support@simpliflo.co.uk" className="underline text-[var(--teal-deep)]">support@simpliflo.co.uk</a>.
                             </p>
                         </div>
 
